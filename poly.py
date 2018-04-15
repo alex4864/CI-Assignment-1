@@ -34,21 +34,12 @@ def design_matrix(x, degree):
     :return: Expanded data in a numpy array of shape (N,degree+1)
     """
 
-    ######################
-    #
-    # TODO
-    #
-    # Return the numpy array of shape (N,degree+1)
-    # Storing the data of the form x_i^j at row i and column j
-    # Look at the function description for more info
-    #
-    # TIP: use the power function from numpy
 
-    X = x  # TODO: change me
+    power_arrays = []
+    for i in range(degree + 1):
+        power_arrays.append(x**i)
 
-    #
-    # END TODO
-    ######################
+    X = np.hstack(power_arrays)
 
     return X
 
