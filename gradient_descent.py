@@ -37,6 +37,10 @@ def gradient_descent(f, df, theta0, learning_rate, max_iter):
     E_list = np.zeros(max_iter)
     theta = theta0
 
+    for i in range(max_iter):
+        theta = theta - df(theta) * learning_rate
+        E_list[i] = f(theta)
+
     # END TODO
     ###########
 
