@@ -28,11 +28,6 @@ def gradient_descent(f, df, theta0, learning_rate, max_iter):
     :param max_iter: maximal number of iterations
     :return: x (solution), E_list (array of errors over iterations)
     """
-    ##############
-    #
-    # TODO
-    #
-    # Implement a gradient descent algorithm
 
     E_list = np.zeros(max_iter)
     theta = theta0
@@ -40,9 +35,6 @@ def gradient_descent(f, df, theta0, learning_rate, max_iter):
     for i in range(max_iter):
         theta = theta - df(theta) * learning_rate
         E_list[i] = f(theta)
-
-    # END TODO
-    ###########
 
     return theta, E_list
 
