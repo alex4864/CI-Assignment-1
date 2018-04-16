@@ -80,7 +80,7 @@ def plot_errors(i_best, degrees, mse_train, mse_val, mse_test):
     """
 
     for mse, lab in zip([mse_train, mse_val, mse_test], ['train', 'val', 'test']):
-        plt.plot(degrees, mse, label=lab, linewidth=3)
+        plt.plot(degrees, mse/np.max(mse), label=lab, linewidth=3)
 
     plt.ylim([0, 1])
     plt.axvline(x=degrees[i_best], color='black', linestyle='--', linewidth=3,
