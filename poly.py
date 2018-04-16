@@ -34,7 +34,6 @@ def design_matrix(x, degree):
     :return: Expanded data in a numpy array of shape (N,degree+1)
     """
 
-
     power_arrays = []
     for i in range(degree + 1):
         power_arrays.append(x**i)

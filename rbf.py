@@ -37,8 +37,8 @@ def get_centers_and_sigma(n_centers):
     #       an euclidian division. The solution is to convert one of the two integers to float.
     #
 
-    centers = np.zeros(n_centers)  # TODO: Change me
-    sigma = 1.  # TODO: Change me
+    centers = np.linspace(-1.0, 1.0, n_centers)
+    sigma = 2.0 / n_centers
 
     # END TODO
     ######################
@@ -76,7 +76,12 @@ def design_matrix(x, centers, sigma):
     # TIP: don't forget that the first row has only ones
     #
 
-    res = x  # TODO: Change me
+    hbf_arrays = [x]
+    for c in centers:
+        new_arr = np.exp(((x - c)**2 * -1) / (2 * sigma**2))
+        hbf_arrays.append(new_arr)
+
+    res = np.hstack(hbf_arrays)
 
     # END TODO
     ######################
@@ -107,7 +112,9 @@ def train(x, y, n_centers):
     #   - This should not be very different from the solution you provided in poly.py
     #
 
-    theta_opt = np.zeros(n_centers + 1)  # TODO: Change me
+    centers, sigma = get_centers_and_sigma(n_centers)
+    X = design_matrix(x, centers, sigma)
+    theta_opt = np.linalg.inv(X.T.dot(X)).dot(X.T.dot(y))
 
     # END TODO
     ######################
@@ -138,7 +145,9 @@ def compute_error(theta, n_centers, x, y):
     #   - This should not be very different from the solution you provided in poly.py
     #
 
-    err = -1  # TODO: Change me
+    centers, sigma = get_centers_and_sigma(n_centers)
+    X = design_matrix(x, centers, sigma)
+    err = np.linalg.norm(X.dot(theta) - y) ** 2
 
     # END TODO
     ######################
