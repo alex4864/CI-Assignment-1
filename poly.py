@@ -56,25 +56,8 @@ def train(x, y, degree):
     :return: a numpy array containing the coefficient of each polynomial degree in the regression
     """
 
-    ######################
-    #
-    # TODO
-    #
-    # Returns the analytical solution of the linear regression
-    #
-    # TIPs:
-    #  - Don't forget to first expand the data
-    #  - WARNING:   With numpy array * is a term-term matrix multiplication
-    #               The function np.dot performs a classic matrix multiplication
-    #
-    #  - To compute the pseudo inverse (A*A.T)^-1 * A.T with a more stable algorithm numpy provides the function pinv
-    #   pinv is accessible in the sub-library numpy.linalg
-    #
-
-    theta_opt = np.zeros(degree + 1)  # TODO: Change me
-
-    # END TODO
-    ######################
+    X = design_matrix(x, degree)
+    theta_opt = np.linalg.inv(X.T.dot(X)).dot(X.T.dot(y))
 
     return theta_opt
 
@@ -105,7 +88,9 @@ def compute_error(theta, degree, x, y):
     #
     #  - One can use the numpy function mean
 
-    err = -1  # TODO: Change me
+    X = design_matrix(x, degree)
+
+    err = np.linalg.norm(X.dot(theta) - y)**2
 
     #
     # END TODO
