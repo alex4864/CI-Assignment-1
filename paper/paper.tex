@@ -4,19 +4,19 @@
 \usepackage{graphicx}
 \begin{document}
 \begin{titlepage}
-	\centering
-	{\huge \bf Assignment 1\par}
-	\vspace{1cm}
-	{\Large Computational Intelligence, SS2018\par}
-	\vspace{1cm}
-	\begin{tabular}{|l|l|l|}
-	\hline
-	\multicolumn{3}{|c|}{\textbf{Team Members}}   \\ \hline
-	Last name & First name & Matriculation Number \\ \hline
-	Lee       & Eunseo     & 11739623             \\ \hline
-	Shadley   & Alex       & 11739595             \\ \hline
-	Lee       & Dayeong    & 11730321             \\ \hline
-	\end{tabular}
+  \centering
+    {\huge \bf Assignment 1\par}
+    \vspace{1cm}
+    {\Large Computational Intelligence, SS2018\par}
+    \vspace{1cm}
+    \begin{tabular}{|l|l|l|}
+      \hline
+      \multicolumn{3}{|c|}{\textbf{Team Members}}   \\ \hline
+      Last name & First name & Matriculation Number \\ \hline
+      Lee       & Eunseo     & 11739623             \\ \hline
+      Shadley   & Alex       & 11739595             \\ \hline
+      Lee       & Dayeong    & 11730321             \\ \hline
+    \end{tabular}
 \end{titlepage}
 
 \section{Linear Regression}
@@ -36,39 +36,39 @@ The following plots demonstrate the results of Linear Regression with polynomial
 \section{Logistic Regression}
 \subsection{Derivation of Gradient}
 \begin{equation}
-\begin{split}
-J(\bm{\theta}) &= -\frac{1}{m} \sum_{i=1}^{m} \left( y^{(i)} \log (h_{\bm{\theta}}(\bm{x}^{(i)}))
-+ (1-y^{(i)} ) \log (1 - h_{\bm{\theta}}(\bm{x}^{(i)}))  \right) \\
-&=  -\frac{1}{m} \sum_{i=1}^{m} \left( y^{(i)} \log (\sigma(\bm{x}^{(i)T}\bm{\theta}))
-+ (1-y^{(i)} ) \log (1 - \sigma(\bm{x}^{(i)T}\bm{\theta})  \right)
-\end{split}
+  \begin{split}
+    J(\bm{\theta}) &= -\frac{1}{m} \sum_{i=1}^{m} \left( y^{(i)} \log (h_{\bm{\theta}}(\bm{x}^{(i)}))
+    + (1-y^{(i)} ) \log (1 - h_{\bm{\theta}}(\bm{x}^{(i)}))  \right) \\
+    &=  -\frac{1}{m} \sum_{i=1}^{m} \left( y^{(i)} \log (\sigma(\bm{x}^{(i)T}\bm{\theta}))
+    + (1-y^{(i)} ) \log (1 - \sigma(\bm{x}^{(i)T}\bm{\theta})  \right)
+  \end{split}
 \end{equation}
 The partial derivative of the cost function with respect $\theta_j$ is
 \begin{equation}
-\begin{split}
-\frac{\partial J(\bm{\theta})}{\partial \theta_j }
-&= -\frac{1}{m} \sum_{i=1}^m \left(
-y^{(i)} \frac{1}{\sigma(\bm{x}^{(i)T}\bm{\theta})} \frac{\partial \sigma(\bm{x}^{(i)T}\bm{\theta})}{\partial \theta_j}
-- (1-y^{(i)}) \frac{1}{1-\sigma(\bm{x}^{(i)T}\bm{\theta})} \frac{\partial \sigma(\bm{x}^{(i)T}\bm{\theta})}{\partial \theta_j}
-\right) \\
-&= -\frac{1}{m} \sum_{i=1}^m \left(
-y^{(i)} \frac{\sigma(\bm{x}^{(i)T}\bm{\theta}) \cdot (1 - \sigma(\bm{x}^{(i)T}\bm{\theta}))}{\sigma(\bm{x}^{(i)T}\bm{\theta})} \cdot \frac{\partial \bm{x}^{(i)T}\bm{\theta}}{\partial \theta_j}
- - (1 - y^{(i)}) \frac{\sigma(\bm{x}^{(i)T}\bm{\theta}) \cdot (1 - \sigma(\bm{x}^{(i)T}\bm{\theta}))}{1 - \sigma(\bm{x}^{(i)T}\bm{\theta})} \cdot \frac{\bm{x}^{(i)T}\bm{\theta}}{\partial \theta_j}
-\right) \\
-&= -\frac{1}{m} \sum_{i=1}^{m} \left(
-y^{(i)} \frac{\sigma(\bm{x}^{(i)T}\bm{\theta}) \cdot (1 - \sigma(\bm{x}^{(i)T}\bm{\theta})) \cdot x_j^{(i)}}{\sigma(\bm{x}^{(i)T}\bm{\theta})}
-- (1 - y^{(i)}) \frac{\sigma(\bm{x}^{(i)T}\bm{\theta}) \cdot (1 - \sigma(\bm{x}^{(i)T}\bm{\theta})) \cdot x_j^{(i)}}{1 - \sigma(\bm{x}^{(i)T}\bm{\theta})}
-\right) \\
-&= - \frac{1}{m} \sum_{i=1}^m \left(
-y^{(i)} - y^{(i)} \sigma(\bm{x}^{(i)T}\bm{\theta}) + y^{(i)} \sigma(\bm{x}^{(i)T}\bm{\theta}) - \sigma(\bm{x}^{(i)T}\bm{\theta}) \right)\cdot x_j^{(i)} \\
-&= -\frac{1}{m} \sum_{i=1}^m \left(
-y^{(i)} - \sigma(\bm{x}^{(i)T}\bm{\theta})\right) \cdot x_j^{(i)} \\
-&= \frac{1}{m} \sum_{i=1}^m \left( h_{\bm{\theta}}(\bm{x}^{(i)}) - y^{(i)}\right) \cdot x_j^{(i)}
-\end{split}
+  \begin{split}
+    \frac{\partial J(\bm{\theta})}{\partial \theta_j }
+    &= -\frac{1}{m} \sum_{i=1}^m \left(
+    y^{(i)} \frac{1}{\sigma(\bm{x}^{(i)T}\bm{\theta})} \frac{\partial \sigma(\bm{x}^{(i)T}\bm{\theta})}{\partial \theta_j}
+    - (1-y^{(i)}) \frac{1}{1-\sigma(\bm{x}^{(i)T}\bm{\theta})} \frac{\partial \sigma(\bm{x}^{(i)T}\bm{\theta})}{\partial \theta_j}
+    \right) \\
+    &= -\frac{1}{m} \sum_{i=1}^m \left(
+    y^{(i)} \frac{\sigma(\bm{x}^{(i)T}\bm{\theta}) \cdot (1 - \sigma(\bm{x}^{(i)T}\bm{\theta}))}{\sigma(\bm{x}^{(i)T}\bm{\theta})} \cdot \frac{\partial \bm{x}^{(i)T}\bm{\theta}}{\partial \theta_j}
+    - (1 - y^{(i)}) \frac{\sigma(\bm{x}^{(i)T}\bm{\theta}) \cdot (1 - \sigma(\bm{x}^{(i)T}\bm{\theta}))}{1 - \sigma(\bm{x}^{(i)T}\bm{\theta})} \cdot \frac{\bm{x}^{(i)T}\bm{\theta}}{\partial \theta_j}
+    \right) \\
+    &= -\frac{1}{m} \sum_{i=1}^{m} \left(
+    y^{(i)} \frac{\sigma(\bm{x}^{(i)T}\bm{\theta}) \cdot (1 - \sigma(\bm{x}^{(i)T}\bm{\theta})) \cdot x_j^{(i)}}{\sigma(\bm{x}^{(i)T}\bm{\theta})}
+    - (1 - y^{(i)}) \frac{\sigma(\bm{x}^{(i)T}\bm{\theta}) \cdot (1 - \sigma(\bm{x}^{(i)T}\bm{\theta})) \cdot x_j^{(i)}}{1 - \sigma(\bm{x}^{(i)T}\bm{\theta})}
+    \right) \\
+    &= - \frac{1}{m} \sum_{i=1}^m \left(
+    y^{(i)} - y^{(i)} \sigma(\bm{x}^{(i)T}\bm{\theta}) + y^{(i)} \sigma(\bm{x}^{(i)T}\bm{\theta}) - \sigma(\bm{x}^{(i)T}\bm{\theta}) \right)\cdot x_j^{(i)} \\
+    &= -\frac{1}{m} \sum_{i=1}^m \left(
+    y^{(i)} - \sigma(\bm{x}^{(i)T}\bm{\theta})\right) \cdot x_j^{(i)} \\
+    &= \frac{1}{m} \sum_{i=1}^m \left( h_{\bm{\theta}}(\bm{x}^{(i)}) - y^{(i)}\right) \cdot x_j^{(i)}
+  \end{split}
 \end{equation}
 Thus, the gradient of the cost function is
 \begin{equation}
-\frac{\partial J(\bm{\theta})}{\partial \theta_j } = \frac{1}{m} \sum_{i=1}^m \left( h_{\bm{\theta}}(\bm{x}^{(i)}) - y^{(i)}\right) \cdot x_j^{(i)}
+  \frac{\partial J(\bm{\theta})}{\partial \theta_j } = \frac{1}{m} \sum_{i=1}^m \left( h_{\bm{\theta}}(\bm{x}^{(i)}) - y^{(i)}\right) \cdot x_j^{(i)}
 \end{equation}
 \subsection{Logistic Regression training with gradient descent and scipy.optimize}
 \subsubsection{Gradient descent}
@@ -89,7 +89,7 @@ Thus, the gradient of the cost function is
 	\caption{iteration = 2000}
 \end{figure}
 
-In the case of figure 1, the process stops before it reaches the local minima. In the case of figure 2, the process reaches the local minima in about 50 iterations. However, it continues to iterate even though the error does not change.  
+In the case of figure 1, the process stops before it reaches the local minima. In the case of figure 2, the process reaches the local minima in about 50 iterations. However, it continues to iterate even though the error does not change.
 
 When the number of iterations is too low, the logistic regression process finishes before reaching the local minima.When the number of iterations is too high, it takes a lot of time. Even though it reaches the local minima, it continues to iterate until it reaches the iteration number. Therefore, the number of iterations should not be too low and high.
 \paragraph
@@ -123,28 +123,28 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 \paragraph
 1 The following plots demonstrate the results of Logistic Regression with iterations = 1000, learning rate $\eta$ = 1 and varying degrees $l$ = \{1, 2, 5, 15\}:
 
-\begin{figure}[h]	
+\begin{figure}[h]
 	\includegraphics[width=0.4	\textwidth]{logreg_deg1_iter20000.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg1_iter20000_learn.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg1_iter20000_error.png}
 	\textbf{final learning rate : 2.59$e$\textsuperscript{-132}}
 	\caption{degree $l$ = 1}
 \end{figure}
-	\begin{figure}[h]	
+	\begin{figure}[h]
 	\includegraphics[width=0.4	\textwidth]{logreg_deg2_iter2000.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter2000_learn.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter2000_error.png}
 	\textbf{final learning rate : 3.94$e$\textsuperscript{-274}}
 	\caption{degree $l$ = 2}
 \end{figure}
-\begin{figure}[h]	
+\begin{figure}[h]
 	\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_learn.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_error.png}
 	\textbf{final learning rate : 12.5}
 	\caption{degree $l$ = 5}
 \end{figure}
-\begin{figure}[h]	
+\begin{figure}[h]
 	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000_learn.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000_error.png}
@@ -158,7 +158,7 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 Speed : GDad reaches near the local minima faster than non-adaptive gradient.\\
 Train set error : Both have the same train error(0.469).\\
 Test set error : Both have the same test error(0.387).\\
-\\ 
+\\
 \textbf{Degree $l$ = 2 :}\\
 Speed : GDad reaches near the local minima faster than non-adaptive gradient.\\
 Train set error : Both have the same train error(0.450).\\
@@ -187,7 +187,7 @@ That is, at fist, GDad makes big steps to find the the local minima. Then, when 
 \subsubsection{Scipy optimizer}
 \paragraph
 1 The following plots demonstrate the results of Logistic Regression using scipy.optimize, with iterations = 1000, learning rate $\eta$ = 1 and varying degrees $l$ = \{1, 2, 5, 15\}:
-\begin{figure}[h]	
+\begin{figure}[h]
 	\includegraphics[width=0.4\textwidth]{scipy_1.png}
 	\caption{degree $l$ = 1}
 	\includegraphics[width=0.4\textwidth]{scipy_2.png}
@@ -204,7 +204,7 @@ That is, at fist, GDad makes big steps to find the the local minima. Then, when 
 \textbf{Degree $l$ = 1 :}\\
 Train set error : All have the same train error(0.469).\\
 Test set error : All have the same test error(0.387).\\
-\\ 
+\\
 \textbf{Degree $l$ = 2 :}\\
 Train set error : All have the same train error(0.450).\\
 Test set error : All have the same test error(0.354).\\
@@ -219,6 +219,6 @@ Test set error : Scipy optimizer(1.649) $<$ GDad (0.390) $<$ non-adaptive GD(0.3
 \\
 Scipy optimizer optimizes the cost function better than the others. Therefore it has the lowest train set errors in all degrees. However, it has the highest test set error in all degrees. I think it is becuase of overfitting to the train set. Scipy optimizer makes a hypothesis fit perfectly to train set so it causes overfitting problem and get the highest test set error.\\
 \\
-It doesn't change my opinion that degree $l$ = 5 is best to fit the data. Low degree can not predict the complex hypothesis and high degree can cause the overfitting problem. Therfore, appropriate degree is the best. In this problem, it is 5. 
+It doesn't change my opinion that degree $l$ = 5 is best to fit the data. Low degree can not predict the complex hypothesis and high degree can cause the overfitting problem. Therfore, appropriate degree is the best. In this problem, it is 5.
 
 \end{document}
