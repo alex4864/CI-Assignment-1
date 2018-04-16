@@ -74,27 +74,8 @@ def compute_error(theta, degree, x, y):
     :return: err: Mean square error
     """
 
-    ######################
-    #
-    # TODO
-    #
-    # Returns the error (i.e. the cost function)
-    #
-    # TIPs:
-    #  - WARNING:   With numpy array * is a term-term matrix multiplication
-    #               The function np.dot performs a matrix multiplication
-    #               A longer alternative is to first change your array to the matrix class using np.matrix,
-    #               Then * becomes a matrix multiplication
-    #
-    #  - One can use the numpy function mean
-
     X = design_matrix(x, degree)
-
     err = np.linalg.norm(X.dot(theta) - y)**2
-
-    #
-    # END TODO
-    ######################
 
     return err
 
