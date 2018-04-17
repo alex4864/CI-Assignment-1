@@ -119,4 +119,39 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 4
 \paragraph
 5
+
+\subsubsection{Adaptative gradient descent (GDad)}
+\paragraph
+1 The following plots demonstrate the results of Logistic Regression with iterations = 2000, learning rate $\eta$ = 1 and varying degrees $l$ = \{1, 2, 5, 15\}:
+\begin{figure}[h]	
+	\includegraphics[width=0.4	\textwidth]{logreg_deg1_iter20000.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg1_iter20000_learn.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg1_iter20000_error.png}
+	\textbf{final learning rate : 3.25$e$\textsuperscript{-287}}
+	\caption{degree $l$ = 1}
+\end{figure}
+\begin{figure}[h]	
+\includegraphics[width=0.4	\textwidth]{logreg_deg2_iter2000.png}
+\includegraphics[width=0.4\textwidth]{logreg_deg2_iter2000_learn.png}
+\includegraphics[width=0.4\textwidth]{logreg_deg2_iter2000_error.png}
+\textbf{final learning rate : 3.94$e$\textsuperscript{-274}}
+\caption{degree $l$ = 2}
+\end{figure}
+\begin{figure}[h]	
+\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000.png}
+\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_learn.png}
+\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_error.png}
+\textbf{final learning rate : 15.3}
+\caption{degree $l$ = 5}
+\end{figure}
+\begin{figure}[h]	
+	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000_learn.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000_error.png}
+	\textbf{final learning rate : 10.4}
+	\caption{degree $l$ = 15}
+\end{figure}
+
+For each degree compare with the non-adaptive gradient descent variant. In particular, is the evolution of the learning rate numerically coherent with your previous guess of the optimal learning rate ? Discuss why GDad can be useful.
+
 \end{document}
