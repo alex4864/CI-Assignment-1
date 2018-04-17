@@ -89,7 +89,7 @@ Thus, the gradient of the cost function is
 	\caption{iteration = 2000}
 \end{figure}
 
-In case of figure 1, the process stops before it reaches the local minima. In case of figure 2, the process reaches the local minima in about 50 iterations. However, it continues to iterate even though the error does not change.  
+In the case of figure 1, the process stops before it reaches the local minima. In the case of figure 2, the process reaches the local minima in about 50 iterations. However, it continues to iterate even though the error does not change.  
 
 When the number of iterations is too low, the logistic regression process finishes before reaching the local minima.When the number of iterations is too high, it takes a lot of time. Even though it reaches the local minima, it continues to iterate until it reaches the iteration number. Therefore, the number of iterations should not be too low and high.
 \paragraph
@@ -111,7 +111,7 @@ When the number of iterations is too low, the logistic regression process finish
 	\caption{learing rate $\eta$ = 15}
 \end{figure}
 
-In case of figure 3, the process stops before it reaches the local minima. In case of figure 4, the process reaches the local minima. In case of figure 5, it doesn't reach the local minima by overshooting the local minima.
+In the case of figure 3, the process stops before it reaches the local minima. In the case of figure 4, the process reaches the local minima. In the case of figure 5, it doesn't reach the local minima by overshooting the local minima.
 
 When learning rate is too low, it takes a lot of time to reach the local minima or it ends before reaching the local minima. When learning rate is too big, it can overshoot the local minima so it may not reach the local minima or may even diverge.
 
@@ -123,6 +123,7 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 \subsubsection{Adaptative gradient descent (GDad)}
 \paragraph
 1 The following plots demonstrate the results of Logistic Regression with iterations = 2000, learning rate $\eta$ = 1 and varying degrees $l$ = \{1, 2, 5, 15\}:
+
 \begin{figure}[h]	
 	\includegraphics[width=0.4	\textwidth]{logreg_deg1_iter20000.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg1_iter20000_learn.png}
@@ -130,19 +131,19 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 	\textbf{final learning rate : 3.25$e$\textsuperscript{-287}}
 	\caption{degree $l$ = 1}
 \end{figure}
-\begin{figure}[h]	
-\includegraphics[width=0.4	\textwidth]{logreg_deg2_iter2000.png}
-\includegraphics[width=0.4\textwidth]{logreg_deg2_iter2000_learn.png}
-\includegraphics[width=0.4\textwidth]{logreg_deg2_iter2000_error.png}
-\textbf{final learning rate : 3.94$e$\textsuperscript{-274}}
-\caption{degree $l$ = 2}
+	\begin{figure}[h]	
+	\includegraphics[width=0.4	\textwidth]{logreg_deg2_iter2000.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter2000_learn.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter2000_error.png}
+	\textbf{final learning rate : 3.94$e$\textsuperscript{-274}}
+	\caption{degree $l$ = 2}
 \end{figure}
 \begin{figure}[h]	
-\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000.png}
-\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_learn.png}
-\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_error.png}
-\textbf{final learning rate : 15.3}
-\caption{degree $l$ = 5}
+	\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_learn.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_error.png}
+	\textbf{final learning rate : 15.3}
+	\caption{degree $l$ = 5}
 \end{figure}
 \begin{figure}[h]	
 	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000.png}
@@ -151,7 +152,37 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 	\textbf{final learning rate : 10.4}
 	\caption{degree $l$ = 15}
 \end{figure}
-
-For each degree compare with the non-adaptive gradient descent variant. In particular, is the evolution of the learning rate numerically coherent with your previous guess of the optimal learning rate ? Discuss why GDad can be useful.
+\clearpage
+\paragraph
+2  These are the comparsion between GDad and non-adpative GD.
+\textbf{Degree $l$ = 1 :}\\
+Speed : GDad reaches near the local minima faster than non-adaptive gradient.\\
+Train set error : Both have the same train error(0.469).\\
+Test set error : Both have the same test error(0.387).\\
+\\ 
+\textbf{Degree $l$ = 2 :}\\
+Speed : GDad reaches near the local minima faster than non-adaptive gradient.\\
+Train set error : Both have the same train error(0.450).\\
+Test set error : Both have the same test error(0.354).\\
+\\
+\textbf{Degree $l$ = 5 :}\\
+Spped : GDad reaches near the local minima faster than non-adaptive gradient.\\
+Train set error : GDad have smaller train error(0.308) than non-adaptive GD(0.336).\\
+Test set error : GDad have bigger test error(0.359) than non-adaptive GD(0.328).\\
+\\
+\textbf{Degree $l$ = 15 :}\\
+Spped : GDad reaches near the local minima faster than non-adaptive gradient.\\
+Train set error : GDad have smaller train error(0.209) than non-adaptive GD(0.323).\\
+Test set error : GDad have bigger test error(0.399) than non-adaptive GD(0.357).\\
+\\
+\\
+The evolution of the learning rate is something different from my previous guess of the optimal learning rate. I thought that the evolution of the learning rate looks like a mountain. It is true in the case of degree 1 and 2. However, in the case of degree 5 and 15, the graph vibrates at the latter part because of the overshooting problem.
+\\
+\\
+GDad is more useful than non-adaptive gradient descent in the respect of the speed(when the learning rate is small) and overshooting the minima(when the learning rate is big). \\
+First, GDad can reach the local minima faster than non-adaptive gradient descent. When the learning rate is small, gradient descent should iterate more than GDad to reach the local minima. Because, in the case of GDad, the learning rate becomes large when the cost becomes small and can make a big step to the local minima.\\
+Second, GDad can avoid the overshooting problem. When the learning rate is big, it can suffer from overshooting problem because the process makes a big step, roams near the local minima and can not reach the local minima. In this case, the costs becomes large and GDad notices that it is in overshooting problem. Then, it can avoid overshooting problem by decreasing the learning rate and reach the local minima. \\
+That is, at fist, GDad makes big steps to find the the local minima. Then, when it reaches near the local minima, it decreases the learning rate to avoid the overshooting problem and reachs the local minima.
+   
 
 \end{document}
