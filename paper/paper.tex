@@ -82,16 +82,16 @@ The following plots demonstrate the results of Linear Regression with polynomial
 
 \section{Logistic Regression}
 \subsection{Derivation of Gradient}
-\begin{equation}
+\[
   \begin{split}
     J(\bm{\theta}) &= -\frac{1}{m} \sum_{i=1}^{m} \left( y^{(i)} \log (h_{\bm{\theta}}(\bm{x}^{(i)}))
     + (1-y^{(i)} ) \log (1 - h_{\bm{\theta}}(\bm{x}^{(i)}))  \right) \\
     &=  -\frac{1}{m} \sum_{i=1}^{m} \left( y^{(i)} \log (\sigma(\bm{x}^{(i)T}\bm{\theta}))
     + (1-y^{(i)} ) \log (1 - \sigma(\bm{x}^{(i)T}\bm{\theta})  \right)
   \end{split}
-\end{equation}
+\]
 The partial derivative of the cost function with respect $\theta_j$ is
-\begin{equation}
+\[
   \begin{split}
     \frac{\partial J(\bm{\theta})}{\partial \theta_j }
     &= -\frac{1}{m} \sum_{i=1}^m \left(
@@ -112,11 +112,11 @@ The partial derivative of the cost function with respect $\theta_j$ is
     y^{(i)} - \sigma(\bm{x}^{(i)T}\bm{\theta})\right) \cdot x_j^{(i)} \\
     &= \frac{1}{m} \sum_{i=1}^m \left( h_{\bm{\theta}}(\bm{x}^{(i)}) - y^{(i)}\right) \cdot x_j^{(i)}
   \end{split}
-\end{equation}
-Thus, the gradient of the cost function is
-\begin{equation}
+\]
+Thus, the gradient of the cost function is \[
   \frac{\partial J(\bm{\theta})}{\partial \theta_j } = \frac{1}{m} \sum_{i=1}^m \left( h_{\bm{\theta}}(\bm{x}^{(i)}) - y^{(i)}\right) \cdot x_j^{(i)}
-\end{equation}
+\]
+
 \subsection{Logistic Regression training with gradient descent and scipy.optimize}
 \subsubsection{Gradient descent}
 \paragraph
