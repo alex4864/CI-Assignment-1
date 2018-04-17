@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import numpy as np
-
+from math import log
 from logreg_toolbox import sig
 
 __author__ = 'bellec, subramoney'
@@ -24,23 +24,15 @@ def cost(theta, x, y):
     """
     N, n = x.shape
 
-    ##############
-    #
-    # TODO
-    #
-    # Write the cost of logistic regression as defined in the lecture
-    # Hint:
-    #   - use the logistic function sig imported from the file toolbox
-    #   - sums of logs of numbers close to zero might lead to numerical errors, try splitting the cost into the sum
-    # over positive and negative samples to overcome the problem. If the problem remains note that low errors is not
-    # necessarily a problem for gradient descent because only the gradient of the cost is used for the parameter updates.
-
     c = 0
-
-    # END TODO
-    ###########
-
-    return c
+    h = sig(np.matmul(x, theta))
+    for hi, yi in zip(h, y) :
+        if yi == 0:
+            c += -1 * log(1-hi)
+        else:
+            c += -1 * log(hi)
+    c = c/N
+    return np.array([c])
 
 
 def grad(theta, x, y):
