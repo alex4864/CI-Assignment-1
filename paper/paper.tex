@@ -118,8 +118,7 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 \paragraph
 4
 \paragraph
-5
-
+5 One possible way to terminate the gradient descent is setting a threshold to the cost function. While caluating the cost in each iteration, if it is below the setting threshold, it can terminate the process. Using this way, it can not reach the perfect local minima but it can reach close to the local minima depending on the threshold. Therefore it can save time. If high accuracy is aimed, then set the threshold low. And if middle accuracy and high speeed are aimed, then set the threshold a little bit higher.
 \subsubsection{Adaptative gradient descent (GDad)}
 \paragraph
 1 The following plots demonstrate the results of Logistic Regression with iterations = 1000, learning rate $\eta$ = 1 and varying degrees $l$ = \{1, 2, 5, 15\}:
