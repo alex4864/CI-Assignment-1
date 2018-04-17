@@ -59,18 +59,20 @@ def adaptative_gradient_descent(f, df, theta0, initial_learning_rate, max_iter):
     :return: x (solution), E_list (list of errors), lr_list (the list of learning rates)
     """
 
-    ##############
-    #
-    # TODO
-    #
-    # Implement the adaptive gradient descent algorithm
-    #
-
-    E_list = np.zeros(max_iter)
-    lr_list = np.zeros(max_iter)
+    E_list = np.zeros(max_iter+1)
+    lr_list = np.zeros(max_iter+1)
+    
     theta = theta0
-
-    # END TODO
-    ###########
-
+    E_list[0] = f(theta0)
+    lr_list[0] = initial_learning_rate
+    
+    for i in range(0,max_iter):
+        new_theta = theta - lr_list[i] * df(theta)
+        E_list[i+1] = f(new_theta)
+        if E_list[i+1] < E_list[i]:
+            lr_list[i+1] = lr_list[i] * 1.03
+            theta = new_theta
+        else:
+            lr_list = lr_list[i] * 0.7
+   
     return theta, E_list, lr_list
