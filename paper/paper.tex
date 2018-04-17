@@ -15,7 +15,7 @@
 	Last name & First name & Matriculation Number \\ \hline
 	Lee       & Eunseo     & 11739623             \\ \hline
 	Shadley   & Alex       & 11739595             \\ \hline
-	          &            &                      \\ \hline
+	Lee       & Dayeong    & 11730321             \\ \hline
 	\end{tabular}
 \end{titlepage}
 
@@ -70,4 +70,53 @@ Thus, the gradient of the cost function is
 \begin{equation}
 \frac{\partial J(\bm{\theta})}{\partial \theta_j } = \frac{1}{m} \sum_{i=1}^m \left( h_{\bm{\theta}}(\bm{x}^{(i)}) - y^{(i)}\right) \cdot x_j^{(i)}
 \end{equation}
+\subsection{Logistic Regression training with gradient descent and scipy.optimize}
+\subsubsection{Gradient descent}
+\paragraph
+1The function check\_gradient in toolbox.py is here to test if your gradient is well computed. Explain what it is doing
+\paragraph
+2The following plots demonstrate the results of Logistic Regression with degree 1 and learning rate $\eta$ = 1 for 20 and 2000 iterations :
+
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{logreg_deg1_iter20.png}
+	\includegraphics[width=0.5\textwidth]{logreg_deg1_iter20_error.png}
+	\caption{iteration = 20}
+\end{figure}
+\clearpage
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{logreg_deg1_iter2000.png}
+	\includegraphics[width=0.5\textwidth]{logreg_deg1_iter2000_error.png}
+	\caption{iteration = 2000}
+\end{figure}
+
+In case of figure 1, the process stops before it reaches the local minima. In case of figure 2, the process reaches the local minima in about 50 iterations. However, it continues to iterate even though the error does not change.  
+
+When the number of iterations is too low, the logistic regression process finishes before reaching the local minima.When the number of iterations is too high, it takes a lot of time. Even though it reaches the local minima, it continues to iterate until it reaches the iteration number. Therefore, the number of iterations should not be too low and high.
+\paragraph
+3 The following plots demonstrate the results of Logistic Regression with degree = 2 , iterations = 200 and learning rate $\eta$ = \{.15, 1.5, 15.\} :
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta015.png}
+	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta015_error.png}
+	\caption{learing rate $\eta$ = .15}
+\end{figure}
+\clearpage
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta105.png}
+	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta105_error.png}
+	\caption{learing rate $\eta$ = 1.5}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta15.png}
+	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta15_error.png}
+	\caption{learing rate $\eta$ = 15}
+\end{figure}
+
+In case of figure 3, the process stops before it reaches the local minima. In case of figure 4, the process reaches the local minima. In case of figure 5, it doesn't reach the local minima by overshooting the local minima.
+
+When learning rate is too low, it takes a lot of time to reach the local minima or it ends before reaching the local minima. When learning rate is too big, it can overshoot the local minima so it may not reach the local minima or may even diverge.
+
+\paragraph
+4
+\paragraph
+5
 \end{document}
