@@ -32,7 +32,8 @@ def cost(theta, x, y):
         else:
             c += -1 * log(hi)
     c = c/N
-    return np.array([c])
+
+    return np.array([c]) 
 
 
 def grad(theta, x, y):
@@ -46,15 +47,8 @@ def grad(theta, x, y):
     :return: gradient
     """
     N, n = x.shape
-
-    ##############
-    #
-    # TODO
-    #
-
-    g = np.zeros(theta.shape)
-
-    # END TODO
-    ###########
+    
+    h = sig(np.matmul(x, theta))-y
+    g = np.matmul(h.T, x)/N
 
     return g
