@@ -1,5 +1,5 @@
 \documentclass[a4paper]{article}
-\usepackage{amsmath, bm}
+\usepackage{amsmath, amssymb, bm}
 \usepackage[margin=1in]{geometry}
 \usepackage{graphicx}
 \begin{document}
@@ -21,7 +21,43 @@
 
 \section{Linear Regression}
 \subsection{Derivation of Regularized Linear Regression}
-asdfasdf
+\begin{itemize}
+  \item Preliminary questions
+    \begin{itemize}
+      \item for each i, \(\bm{X}^{(i)}\) is n+1 dimensional column vector. For
+        notaion convenience, all \(\bm{X}_0^{(i)}\) is set to \(0\).
+      \item The gradient of \(J(\bm{\theta})\) is \[
+          \frac{\partial J(\bm{\theta})}{\partial \bm{\theta}} = \langle
+          \frac{\partial J(\bm{\theta})}{\partial \theta_0}, \quad
+          \frac{\partial J(\bm{\theta})}{\partial \theta_1}, \quad
+          \cdots, \quad
+          \frac{\partial J(\bm{\theta})}{\partial \theta_n}
+          \rangle
+        \]. It is n+1 dimensional column vector.
+      \item In gradient, function \(f\) is
+        \(\mathbb{R}^n\rightarrow\mathbb{R} \) and the gradient itself is vector.
+        The jacobian matrix of function
+        \(\bm{f}\colon\mathbb{R}^n\rightarrow\mathbb{R}^m\) is
+        \[[
+          \quad \frac{\partial \bm{f}}{\partial x_1} \quad
+          \frac{\partial \bm{f}}{\partial x_2} \quad
+          \cdots \quad \frac{\partial \bm{f}}{\partial x_n} \quad
+          ] =
+          \begin{bmatrix}
+            \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\
+            \vdots & \ddots & \vdots \\
+            \frac{\partial f_m}{\partial x_1} & \cdots & \frac{\partial f_m}{\partial x_n}
+          \end{bmatrix}
+          \]
+          where \(\bm{f} = <f_1, f_2, \cdots, f_m>\) and \(\bm{x} = <x_1, x_2, \cdots, x_n>\).
+          When \(m=0\), Jacobian matrix and gradient are same.
+        \item \(\bm{X\theta}\) is \(m\) dimension vector. The dimension of jacobian
+          matrix \(\frac{\partial \bm{X\theta}}{\partial \bm{\theta}}\) is \(n+1 \times m\).
+          In this case, \(\frac{\partial \bm{X\theta}}{\partial \bm{\theta}}\) is same with \(\bm{X}\).
+    \end{itemize}
+  \item 2
+  \item 3
+\end{itemize}
 
 \subsection{Linear Regression with polynomial features}
 
