@@ -55,7 +55,18 @@
           matrix \(\frac{\partial \bm{X\theta}}{\partial \bm{\theta}}\) is \(n+1 \times m\).
           In this case, \(\frac{\partial \bm{X\theta}}{\partial \bm{\theta}}\) is same with \(\bm{X}\).
     \end{itemize}
-  \item 2
+  \item When the gradient of the cost function is zero, the cost function is minimized.
+    \begin{align*}
+      \frac{\partial \bm{X\theta}}{\partial \bm{\theta}} = 0 \\
+      \frac{2}{m}(\bm{X\theta}-\bm{y})^T \cdot \bm{X} + \frac{2\lambda}{m}\bm{\theta} = 0 \\
+      \frac{2}{m}(\bm{X}^T\bm{X\theta} - \bm{X}^T\bm{y}) + \frac{2\lambda}{m}\bm{\theta} = 0 \\
+      \bm{X}^T\bm{X\theta} - \bm{X}^T\bm{y} + \lambda\bm{\theta} = 0 \\
+      \bm{X}^T\bm{X\theta} - \bm{X}^T\bm{y} + \lambda\bm{I\theta} = 0 \\
+      (\bm{X}^T\bm{X} + \lambda\bm{I})\bm{\theta} = \bm{X}^T\bm{y} \\
+      \bm{\theta} = (\bm{X}^T\bm{X} + \lambda\bm{I})^{-1}\bm{X}^T\bm{y}
+    \end{align*}
+    As long as \(\bm{X}^T\bm{X} + \lambda\bm{I}\) is invertable, the optimal parameters
+    \(\bm{\theta}^* = (\bm{X}^T\bm{X} + \lambda\bm{I})^{-1}\bm{X}^T\bm{y}\)
   \item 3
 \end{itemize}
 
