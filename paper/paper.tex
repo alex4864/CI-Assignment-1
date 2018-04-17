@@ -122,13 +122,13 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 
 \subsubsection{Adaptative gradient descent (GDad)}
 \paragraph
-1 The following plots demonstrate the results of Logistic Regression with iterations = 2000, learning rate $\eta$ = 1 and varying degrees $l$ = \{1, 2, 5, 15\}:
+1 The following plots demonstrate the results of Logistic Regression with iterations = 1000, learning rate $\eta$ = 1 and varying degrees $l$ = \{1, 2, 5, 15\}:
 
 \begin{figure}[h]	
 	\includegraphics[width=0.4	\textwidth]{logreg_deg1_iter20000.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg1_iter20000_learn.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg1_iter20000_error.png}
-	\textbf{final learning rate : 3.25$e$\textsuperscript{-287}}
+	\textbf{final learning rate : 2.59$e$\textsuperscript{-132}}
 	\caption{degree $l$ = 1}
 \end{figure}
 	\begin{figure}[h]	
@@ -142,19 +142,19 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 	\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_learn.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg5_iter2000_error.png}
-	\textbf{final learning rate : 15.3}
+	\textbf{final learning rate : 12.5}
 	\caption{degree $l$ = 5}
 \end{figure}
 \begin{figure}[h]	
 	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000_learn.png}
 	\includegraphics[width=0.4\textwidth]{logreg_deg15_iter2000_error.png}
-	\textbf{final learning rate : 10.4}
+	\textbf{final learning rate : 12.5}
 	\caption{degree $l$ = 15}
 \end{figure}
 \clearpage
 \paragraph
-2  These are the comparsion between GDad and non-adpative GD.
+2  These are the comparsion between GDad and non-adpative GD.\\
 \textbf{Degree $l$ = 1 :}\\
 Speed : GDad reaches near the local minima faster than non-adaptive gradient.\\
 Train set error : Both have the same train error(0.469).\\
@@ -167,13 +167,13 @@ Test set error : Both have the same test error(0.354).\\
 \\
 \textbf{Degree $l$ = 5 :}\\
 Spped : GDad reaches near the local minima faster than non-adaptive gradient.\\
-Train set error : GDad have smaller train error(0.308) than non-adaptive GD(0.336).\\
-Test set error : GDad have bigger test error(0.359) than non-adaptive GD(0.328).\\
+Train set error : GDad have smaller train error(0.315) than non-adaptive GD(0.349).\\
+Test set error : GDad have bigger test error(0.353) than non-adaptive GD(0.323).\\
 \\
 \textbf{Degree $l$ = 15 :}\\
 Spped : GDad reaches near the local minima faster than non-adaptive gradient.\\
-Train set error : GDad have smaller train error(0.209) than non-adaptive GD(0.323).\\
-Test set error : GDad have bigger test error(0.399) than non-adaptive GD(0.357).\\
+Train set error : GDad have smaller train error(0.303) than non-adaptive GD(0.333).\\
+Test set error : GDad have bigger test error(0.390) than non-adaptive GD(0.342).\\
 \\
 \\
 The evolution of the learning rate is something different from my previous guess of the optimal learning rate. I thought that the evolution of the learning rate looks like a mountain. It is true in the case of degree 1 and 2. However, in the case of degree 5 and 15, the graph vibrates at the latter part because of the overshooting problem.
@@ -183,6 +183,43 @@ GDad is more useful than non-adaptive gradient descent in the respect of the spe
 First, GDad can reach the local minima faster than non-adaptive gradient descent. When the learning rate is small, gradient descent should iterate more than GDad to reach the local minima. Because, in the case of GDad, the learning rate becomes large when the cost becomes small and can make a big step to the local minima.\\
 Second, GDad can avoid the overshooting problem. When the learning rate is big, it can suffer from overshooting problem because the process makes a big step, roams near the local minima and can not reach the local minima. In this case, the costs becomes large and GDad notices that it is in overshooting problem. Then, it can avoid overshooting problem by decreasing the learning rate and reach the local minima. \\
 That is, at fist, GDad makes big steps to find the the local minima. Then, when it reaches near the local minima, it decreases the learning rate to avoid the overshooting problem and reachs the local minima.
-   
+
+
+\subsubsection{Scipy optimizer}
+\paragraph
+1 The following plots demonstrate the results of Logistic Regression using scipy.optimize, with iterations = 1000, learning rate $\eta$ = 1 and varying degrees $l$ = \{1, 2, 5, 15\}:
+\begin{figure}[h]	
+	\includegraphics[width=0.4\textwidth]{scipy_1.png}
+	\caption{degree $l$ = 1}
+	\includegraphics[width=0.4\textwidth]{scipy_2.png}
+	\caption{degree $l$ = 2}
+	\includegraphics[width=0.4\textwidth]{scipy_5.png}
+	\caption{degree $l$ = 5}
+	\includegraphics[width=0.4\textwidth]{scipy_15.png}
+	\caption{degree $l$ = 15}
+\end{figure}
+\clearpage
+
+\paragraph
+2 These are the comparsion between GDad, non-adpative GD and scipy optimizer.\\
+\textbf{Degree $l$ = 1 :}\\
+Train set error : All have the same train error(0.469).\\
+Test set error : All have the same test error(0.387).\\
+\\ 
+\textbf{Degree $l$ = 2 :}\\
+Train set error : All have the same train error(0.450).\\
+Test set error : All have the same test error(0.354).\\
+\\
+\textbf{Degree $l$ = 5 :}\\
+Train set error : Scipy optimizer(0.295) $<$ GDad (0.315) $<$ GD(0.349).\\
+Test set error : Scipy optimizer(0.417) $>$ GDad(0.353) $>$ GD(0.323).\\
+\\
+\textbf{Degree $l$ = 15 :}\\
+Train set error : Scipy optimizer(0.210) $<$ GDad(0.303) $<$ GD(0.333).\\
+Test set error : Scipy optimizer(1.649) $<$ GDad (0.390) $<$ non-adaptive GD(0.342).\\
+\\
+Scipy optimizer optimizes the cost function better than the others. Therefore it has the lowest train set errors in all degrees. However, it has the highest test set error in all degrees. I think it is becuase of overfitting to the train set. Scipy optimizer makes a hypothesis fit perfectly to train set so it causes overfitting problem and get the highest test set error.\\
+\\
+It doesn't change my opinion that degree $l$ = 5 is best to fit the data. Low degree can not predict the complex hypothesis and high degree can cause the overfitting problem. Therfore, appropriate degree is the best. In this problem, it is 5. 
 
 \end{document}
