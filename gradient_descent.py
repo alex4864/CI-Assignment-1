@@ -73,6 +73,6 @@ def adaptative_gradient_descent(f, df, theta0, initial_learning_rate, max_iter):
             lr_list[i+1] = lr_list[i] * 1.03
             theta = new_theta
         else:
-            lr_list = lr_list[i] * 0.7
+            lr_list[i+1] = lr_list[i] * 0.7
    
     return theta, E_list, lr_list
