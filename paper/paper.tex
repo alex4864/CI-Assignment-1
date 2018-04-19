@@ -134,7 +134,35 @@ In the case of figure 3, the process stops before it reaches the local minima. I
 When learning rate is too low, it takes a lot of time to reach the local minima or it ends before reaching the local minima. When learning rate is too big, it can overshoot the local minima so it may not reach the local minima or may even diverge.
 
 \paragraph
-4
+4 These are  good pairs of values for the number of iterations and learning rate for each degree in l ∈{1,2,5,15} that provides a good solution in reasonable time\\
+\textbf{Degree $l$ = 1 :}\\
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{best_fit_degree1.png}
+	\includegraphics[width=0.5\textwidth]{best_fit_degree1_error.png}
+	\caption{learing rate $\eta$ = 1, iteration = 100}
+\end{figure}\\
+\textbf{Degree $l$ = 2 :}\\
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{best_fit_degree2.png}
+	\includegraphics[width=0.5\textwidth]{best_fit_degree2_error.png}
+	\caption{learing rate $\eta$ = 0.5, iteration = 700}
+\end{figure}
+\textbf{Degree $l$ = 5 :}\\
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{best_fit_degree5.png}
+	\includegraphics[width=0.5\textwidth]{best_fit_degree5_error.png}
+	\caption{learing rate $\eta$ = 0.5, iteration = 2000}
+\end{figure}
+\textbf{Degree $l$ = 5 :}\\
+\begin{figure}[h]
+	\includegraphics[width=0.5\textwidth]{best_fit_degree15.png}
+	\includegraphics[width=0.5\textwidth]{best_fit_degree15_error.png}
+	\caption{learing rate $\eta$ = 0.5, iteration = 2000}
+\end{figure}
+
+Among those four degrees, the degree 5 has the lowest test set error.
+Therfore, degree 5 is best to fit the given dataset.
+
 \paragraph
 5 One possible way to terminate the gradient descent is setting a threshold to the cost function. While caluating the cost in each iteration, if it is below the setting threshold, it can terminate the process. Using this way, it can not reach the perfect local minima but it can reach close to the local minima depending on the threshold. Therefore it can save time. If high accuracy is aimed, then set the threshold low. And if middle accuracy and high speeed are aimed, then set the threshold a little bit higher.
 \subsubsection{Adaptative gradient descent (GDad)}
