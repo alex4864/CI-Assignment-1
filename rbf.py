@@ -147,7 +147,7 @@ def compute_error(theta, n_centers, x, y):
 
     centers, sigma = get_centers_and_sigma(n_centers)
     X = design_matrix(x, centers, sigma)
-    err = np.linalg.norm(X.dot(theta) - y) ** 2
+    err = (1/x.shape[0]) * np.linalg.norm(X.dot(theta) - y) ** 2
 
     # END TODO
     ######################
