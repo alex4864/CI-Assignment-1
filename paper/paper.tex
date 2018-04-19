@@ -73,7 +73,25 @@ Thus, the gradient of the cost function is
 \subsection{Logistic Regression training with gradient descent and scipy.optimize}
 \subsubsection{Gradient descent}
 \paragraph
-1The function check\_gradient in toolbox.py is here to test if your gradient is well computed. Explain what it is doing
+1 The function check\_gradient in toolbox.py is to test if the gradient is well computed.\\ \\
+The process of the gradient is like this.\\  \\
+1) Init the point x0 using random function\\
+2) Compute the cost f0 of x0 in a given dataset\\
+3) Compute the gradient g0 of x0 in a given dataset\\
+4) Init dx using random function\\
+5) Compute df\_g(that is, df is obtained by my gradient fucntion) by inner product of dx and g0\\ \\
+for deltas=(1e-2, 1e-4, 1e-6), iterate 6) $-$ 8)\\
+6) Compute the cost f1 of point (x0 + delta * dx)\\
+7) Compute df(that is, df is obtatined by the two points difference) between point x0 and point (x0 + delta * dx)\\
+8) Compute the "df error" by using the formula = np.log10(np.abs(df\_g - df) + 1e-20) and store the value in the array "apporx\_err"\\ \\
+9) check\_gradient function checks "np.diff(approx\_err) $<$ -1).all()".\\
+
+If my gradient function works well, "df error" should be close to 0. Also, because the deltas are small and differnt values for each iteration, each df is calulated as a slightly different value from the other df for each iteration. Therfore, for each iteration, "df error" is close to 0 and each "df error" is sligtly different because of different delta values. Therefore, np.diff(approx\_err) should be lower than -1.
+
+What if my gradient function doesn't work well?
+In this case, np.diff(approx\_err) cannot be lower than -1. Because, if my gradient funcition doesn't work well, df\_g and df are differnt so "df error" should not be close to 0. Also, because the delta is so small, each df should be slightly different for each iteration. Therfore, "df error = df\_g - df" should not close to 0 and should be slightly different. If "df error"s are not close to 0 and slighly differnt from each other, they can not satisfy the condition "np.diff(approx\_err) $<$ -1).all()". 
+
+
 \paragraph
 2The following plots demonstrate the results of Logistic Regression with degree 1 and learning rate $\eta$ = 1 for 20 and 2000 iterations :
 
