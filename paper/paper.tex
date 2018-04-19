@@ -84,7 +84,7 @@ We found that the 27th degree polynomial had the lowest training error, although
 
 \includegraphics[width=\textwidth]{linreg_deg27.png}
 
-However, the degree with lowest validation error was 13.  Training error for the 13th degree polynomial was 0.384.
+However, the degree with lowest validation error was 13.  Test error for the 13th degree polynomial was 0.384.
 
 \includegraphics[width=\textwidth]{linreg_deg13.png}
 
@@ -108,7 +108,7 @@ We found that the model with 40 RBF Kernels had the lowest training error, altho
 
 \includegraphics[width=\textwidth]{linreg_c40.png}
 
-However, the number of RBF kernels with lowest validation error was 9.  Training error was 0.337.
+However, the number of RBF kernels with lowest validation error was 9.  Testing error was 0.337.
 
 \includegraphics[width=\textwidth]{linreg_c9.png}
 
@@ -116,7 +116,7 @@ The following graph depicts polynomial degree plotted against training, test, an
 
 \includegraphics[width=\textwidth]{linreg_rbf_error.png}
 
-
+We found that RBF models behaved similarly to polynomial models, but performed significantly better.  The best fit of a polynomial model, polynomial degree 13, had an test error of 0.384, while the best RBF model, 9 Kernels, had a test error of 0.337.  However, it should be noted that overfitting with higher numbers of parameters is much more severe with RBF models.
 
 \section{Logistic Regression}
 \subsection{Derivation of Gradient}
