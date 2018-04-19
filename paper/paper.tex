@@ -80,6 +80,44 @@ The following plots demonstrate the results of Linear Regression with polynomial
 \includegraphics[width=0.5\textwidth]{linreg_deg5.png}%
 \includegraphics[width=0.5\textwidth]{linreg_deg20.png}\par
 
+We found that the 27th degree polynomial had the lowest training error, although test error for degree 27 was 2.743.
+
+\includegraphics[width=\textwidth]{linreg_deg27.png}
+
+However, the degree with lowest validation error was 13.  Training error for the 13th degree polynomial was 0.384.
+
+\includegraphics[width=\textwidth]{linreg_deg13.png}
+
+The following graph depicts polynomial degree plotted against training, test, and validation error:
+
+\includegraphics[width=\textwidth]{linreg_error_plot.png}
+
+The graph makes a distinct 'U' shape with test and validation error.  Errors generally decrease for the first 13 or so degrees as one would expect, since more powerful polynomials can more accurately model the complex dataset.  However, these errors begin to increase again past the 13th degree due to overfitting.  Overfitting is the process by which models adapt to specific features of the training set that are not present elsewhere, and becomes a problem as the model becomes less accurate for predicting new data.  Overfitting is mitigated at smaller degrees, as models lack the explanatory power to model these specific features.  Validation sets, constructed from the same dataset as training sets, are important to producing accurate models.  The model is not trained on the validation set, and as a result the model's performance on the validation set is an accurate measure of overall performance, as well as an indicator of overfitting.  By taking the polynomial degree with the lowest validation error, we can find the 'best' model that most accurately fits the data without overfitting.
+
+\subsection{Linear Regression with radial basis functions}
+
+The following plots demonstrate the results of Linear Regression with 1, 2, 5, and 20 RBF Kernels:
+
+\noindent
+\includegraphics[width=0.5\textwidth]{linreg_c1.png}%
+\includegraphics[width=0.5\textwidth]{linreg_c2.png}\\[2em]
+\includegraphics[width=0.5\textwidth]{linreg_c5.png}%
+\includegraphics[width=0.5\textwidth]{linreg_c20.png}\par
+
+We found that the model with 40 RBF Kernels had the lowest training error, although test error for 40 RBF Kernels was 182.
+
+\includegraphics[width=\textwidth]{linreg_c40.png}
+
+However, the number of RBF kernels with lowest validation error was 9.  Training error was 0.337.
+
+\includegraphics[width=\textwidth]{linreg_c9.png}
+
+The following graph depicts polynomial degree plotted against training, test, and validation error:
+
+\includegraphics[width=\textwidth]{linreg_rbf_error.png}
+
+
+
 \section{Logistic Regression}
 \subsection{Derivation of Gradient}
 \[
