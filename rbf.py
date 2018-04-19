@@ -76,7 +76,7 @@ def design_matrix(x, centers, sigma):
     # TIP: don't forget that the first row has only ones
     #
 
-    hbf_arrays = [x]
+    hbf_arrays = [np.ones(x.shape)]
     for c in centers:
         new_arr = np.exp(((x - c)**2 * -1) / (2 * sigma**2))
         hbf_arrays.append(new_arr)
