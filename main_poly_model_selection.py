@@ -45,22 +45,9 @@ def main():
     for i in range(K):
         theta_list[i], mse_train[i], mse_val[i], mse_test[i] = poly.train_and_test(data, degrees[i])
 
-    ######################
-    #
-    # TODO
-    #
-    # Find the best degree that minimizes the validation error.
-    # Store it in the variable i_best for plotting the results
-    #
-    # TIPs:
-    # - use the argmin function of numpy
-    # - the code above is already giving the vectors of errors
     i_best = np.argmin(mse_val)
     best_degree = degrees[i_best]
     best_theta = theta_list[i_best]
-    #
-    # END TODO
-    ######################
 
     # Plot the training error as a function of the degrees
     plot_errors(i_best, degrees, mse_train, mse_val, mse_test)

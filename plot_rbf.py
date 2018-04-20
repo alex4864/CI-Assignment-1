@@ -81,17 +81,6 @@ def plot_errors(i_best, n_centers, mse_train, mse_val, mse_test):
     :return:
     """
 
-    ######################
-    #
-    # TODO
-    #
-    # Plot with the Mean Square Error as a function of the number of centers
-    # Use a different color for each sets: train, validation and test
-    # Your are welcome to adapt the code used for the polynomial feature expansion
-    #
-    # Tips:
-    #  - Don't forget to make everything readable with legend title
-
     for mse, lab in zip([mse_train, mse_val, mse_test], ['train', 'val', 'test']):
         plt.plot(n_centers, mse, label=lab, linewidth=3)
 
@@ -101,7 +90,3 @@ def plot_errors(i_best, n_centers, mse_train, mse_val, mse_test):
     plt.xlabel('Degrees')
     plt.ylabel('MSE')
     plt.legend()
-
-    #
-    # END TODO
-    ##############
