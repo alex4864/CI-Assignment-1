@@ -32,20 +32,6 @@ def main():
     for k, v in data.items():
         data[k] = np.array(v).reshape((len(v), 1))
 
-    ######################
-    #
-    # TODO
-    #
-    # Compute the arrays containing the Means Square Errors in all cases
-    #
-    # Find the degree that minimizes the validation error
-    # Store it in the variable i_best for plotting the results
-    #
-    # TIP:
-    # - You are invited to adapt the code you did for the polynomial  case
-    # - use the argmin function of numpy
-    #
-
     # Init vectors storing MSE (Mean square error) values of each sets at each degrees
     mse_train = np.zeros(K)
     mse_val = np.zeros(K)
@@ -58,10 +44,6 @@ def main():
         theta_list[i], mse_train[i], mse_val[i], mse_test[i] = rbf.train_and_test(data, n_centers[i])
 
     i_best = np.argmin(mse_val)
-
-    #
-    # TODO END
-    ######################
 
     # Plot the training error as a function of the degrees
     plot_errors(i_best, n_centers, mse_train, mse_val, mse_test)

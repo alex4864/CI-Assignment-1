@@ -74,7 +74,7 @@ def compute_error(theta, degree, x, y):
     """
 
     X = design_matrix(x, degree)
-    err = np.linalg.norm(X.dot(theta) - y)**2
+    err = (1/x.shape[0]) * np.linalg.norm(X.dot(theta) - y)**2
 
     return err
 

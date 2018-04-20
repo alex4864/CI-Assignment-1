@@ -27,21 +27,8 @@ def get_centers_and_sigma(n_centers):
     :return:
     """
 
-    ######################
-    #
-    # TODO
-    #
-    # TIPs:
-    #   - Use the linspace function from numpy
-    #   - ATTENTION: You might want to write the division a / b, with a and b integers but in python 2 this will perform
-    #       an euclidian division. The solution is to convert one of the two integers to float.
-    #
-
     centers = np.linspace(-1.0, 1.0, n_centers)
     sigma = 2.0 / n_centers
-
-    # END TODO
-    ######################
 
     return centers, sigma
 
@@ -65,26 +52,12 @@ def design_matrix(x, centers, sigma):
     :return: Expanded data in a numpy array of shape (N,n_centers+1)
     """
 
-    ######################
-    #
-    # TODO
-    #
-    # Return the numpy array of shape (N,n_centers+1)
-    # Storing the data of the form exp(- (x_i - c_j) ^2 / (2 sigma^2) ) at row i and column j+1
-    # Look at the function description for more info
-    #
-    # TIP: don't forget that the first row has only ones
-    #
-
-    hbf_arrays = [x]
+    hbf_arrays = [np.ones(x.shape)]
     for c in centers:
         new_arr = np.exp(((x - c)**2 * -1) / (2 * sigma**2))
         hbf_arrays.append(new_arr)
 
     res = np.hstack(hbf_arrays)
-
-    # END TODO
-    ######################
 
     return res
 
@@ -101,23 +74,9 @@ def train(x, y, n_centers):
     :return: numpy array containing the coefficients of each polynomial degree in the regression
     """
 
-    ######################
-    #
-    # TODO
-    #
-    # Returns the analytical solution of the linear regression
-    #
-    # TIPs:
-    #   - Don't forget to first expand the data
-    #   - This should not be very different from the solution you provided in poly.py
-    #
-
     centers, sigma = get_centers_and_sigma(n_centers)
     X = design_matrix(x, centers, sigma)
     theta_opt = np.linalg.inv(X.T.dot(X)).dot(X.T.dot(y))
-
-    # END TODO
-    ######################
 
     return theta_opt
 
@@ -134,23 +93,9 @@ def compute_error(theta, n_centers, x, y):
     :return: err: Mean square error
     """
 
-    ######################
-    #
-    # TODO
-    #
-    # Returns the error (i.e. the cost function)
-    #
-    # TIPs:
-    #   - Don't forget to first expand the data
-    #   - This should not be very different from the solution you provided in poly.py
-    #
-
     centers, sigma = get_centers_and_sigma(n_centers)
     X = design_matrix(x, centers, sigma)
-    err = np.linalg.norm(X.dot(theta) - y) ** 2
-
-    # END TODO
-    ######################
+    err = (1/x.shape[0]) * np.linalg.norm(X.dot(theta) - y) ** 2
 
     return err
 
