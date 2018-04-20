@@ -176,16 +176,16 @@ If my gradient function works well, "df error" should be close to 0. Also, becau
 What if my gradient function doesn't work well?
 In this case, np.diff(approx\_err) cannot be lower than -1. Because, if my gradient funcition doesn't work well, df\_g and df are differnt so "df error" should not be close to 0. Also, because the delta is so small, each df should be slightly different for each iteration. Therfore, "df error = df\_g - df" should not close to 0 and should be slightly different. If "df error"s are not close to 0 and slighly differnt from each other, they can not satisfy the condition "np.diff(approx\_err) $<$ -1).all()". 
 
+\paragraph
+2 The following plots demonstrate the results of Logistic Regression with degree 1 and learning rate $\eta$ = 1 for 20 and 2000 iterations :
 
 \paragraph
-2The following plots demonstrate the results of Logistic Regression with degree 1 and learning rate $\eta$ = 1 for 20 and 2000 iterations :
-
+\\
 \begin{figure}[h]
 	\includegraphics[width=0.5\textwidth]{logreg_deg1_iter20.png}
 	\includegraphics[width=0.5\textwidth]{logreg_deg1_iter20_error.png}
 	\caption{iteration = 20}
 \end{figure}
-\clearpage
 \begin{figure}[h]
 	\includegraphics[width=0.5\textwidth]{logreg_deg1_iter2000.png}
 	\includegraphics[width=0.5\textwidth]{logreg_deg1_iter2000_error.png}
@@ -197,20 +197,20 @@ In the case of figure 1, the process stops before it reaches the local minima. I
 When the number of iterations is too low, the logistic regression process finishes before reaching the local minima.When the number of iterations is too high, it takes a lot of time. Even though it reaches the local minima, it continues to iterate until it reaches the iteration number. Therefore, the number of iterations should not be too low and high.
 \paragraph
 3 The following plots demonstrate the results of Logistic Regression with degree = 2 , iterations = 200 and learning rate $\eta$ = \{.15, 1.5, 15.\} :
-\begin{figure}[h]
-	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta015.png}
-	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta015_error.png}
-	\caption{learing rate $\eta$ = .15}
-\end{figure}
 \clearpage
 \begin{figure}[h]
-	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta105.png}
-	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta105_error.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter200_eta015.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter200_eta015_error.png}
+	\caption{learing rate $\eta$ = .15}
+\end{figure}
+\begin{figure}[h]
+	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter200_eta105.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter200_eta105_error.png}
 	\caption{learing rate $\eta$ = 1.5}
 \end{figure}
 \begin{figure}[h]
-	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta15.png}
-	\includegraphics[width=0.5\textwidth]{logreg_deg2_iter200_eta15_error.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter200_eta15.png}
+	\includegraphics[width=0.4\textwidth]{logreg_deg2_iter200_eta15_error.png}
 	\caption{learing rate $\eta$ = 15}
 \end{figure}
 
@@ -220,25 +220,27 @@ When learning rate is too low, it takes a lot of time to reach the local minima 
 
 \paragraph
 4 These are  good pairs of values for the number of iterations and learning rate for each degree in l ∈{1,2,5,15} that provides a good solution in reasonable time\\
+\clearpage
 \textbf{Degree $l$ = 1 :}\\
 \begin{figure}[h]
 	\includegraphics[width=0.5\textwidth]{best_fit_degree1.png}
 	\includegraphics[width=0.5\textwidth]{best_fit_degree1_error.png}
 	\caption{learing rate $\eta$ = 1, iteration = 100}
 \end{figure}\\
-\textbf{Degree $l$ = 2 :}\\
+\textbf{Degree $l$ = 2 :}
 \begin{figure}[h]
 	\includegraphics[width=0.5\textwidth]{best_fit_degree2.png}
 	\includegraphics[width=0.5\textwidth]{best_fit_degree2_error.png}
 	\caption{learing rate $\eta$ = 0.5, iteration = 700}
 \end{figure}
-\textbf{Degree $l$ = 5 :}\\
+\clearpage
+\textbf{Degree $l$ = 5 :}
 \begin{figure}[h]
 	\includegraphics[width=0.5\textwidth]{best_fit_degree5.png}
 	\includegraphics[width=0.5\textwidth]{best_fit_degree5_error.png}
 	\caption{learing rate $\eta$ = 0.5, iteration = 2000}
-\end{figure}
-\textbf{Degree $l$ = 5 :}\\
+\end{figure}\\
+\textbf{Degree $l$ = 15 :}\\
 \begin{figure}[h]
 	\includegraphics[width=0.5\textwidth]{best_fit_degree15.png}
 	\includegraphics[width=0.5\textwidth]{best_fit_degree15_error.png}
